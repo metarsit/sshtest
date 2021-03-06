@@ -1,3 +1,3 @@
-module golang-repository-template
+module github.com/metarsit/sshtest
 
 go 1.15
