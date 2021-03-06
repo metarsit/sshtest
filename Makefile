@@ -4,7 +4,7 @@ GO=$(shell which go)
 DOCKER=DOCKER_BUILDKIT=1 $(shell which docker)
 LINTER=$(shell which golangci-lint)
 
-BUILD_IMAGE_NAME=golang-application
+BUILD_IMAGE_NAME=sshtest
 RUNTIME_CONTAINER=runtime-container
 
 DOCKER_RUNTIME_CMD=\
@@ -32,14 +32,5 @@ lint-local:
 	${LINTER} run ./...
 
 .PHONY: lint
-lint:
+lint: .docker
 	${DOCKER_RUNTIME_CMD} lint-local
-
-.PHONY: build-local
-build-local:
-	mkdir -p bin/
-	${GO} build -o bin/${BUILD_IMAGE_NAME} cmd/main.go
-
-.PHONY: build
-build: .docker
-	${DOCKER_RUNTIME_CMD} build-local
