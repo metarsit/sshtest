@@ -2,7 +2,6 @@ package sshtest
 
 import (
 	"io"
-	"time"
 
 	"github.com/gliderlabs/ssh"
 )
@@ -30,16 +29,7 @@ func NewHoneyPot(addr string) *HoneyPot {
 // ListenAndServe listens on the TCP network address srv.Addr
 // and then calls Serve to handle incoming connections
 func (h *HoneyPot) ListenAndServe() error {
-	if err := h.server.ListenAndServe(); err != nil {
-		return err
-	}
-
-	// Hackeries to let Honey Pot starts up before in time for
-	// initialization at the very next step
-	delay := 100 * time.Millisecond
-	time.Sleep(delay)
-
-	return nil
+	return h.server.ListenAndServe()
 }
 
 // Close returns any error returned from closing

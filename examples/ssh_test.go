@@ -12,7 +12,7 @@ func TestRunCmdOverSSH(t *testing.T) {
 		fakeUsername = "fake_username"
 		fakePassword = "super_secret_password"
 		fakeCmd      = "fake_command"
-		addr         = "127.0.0.1:2222"
+		addr         = "localhost:2222"
 
 		returnMsg = "something was run over there"
 	)
